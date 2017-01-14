@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  descirption: MyString
+  user_id: 1
+  good_vote: 1
+  bad_vote: 1
+
+two:
+  title: MyString
+  descirption: MyString
+  user_id: 1
+  good_vote: 1
+  bad_vote: 1
