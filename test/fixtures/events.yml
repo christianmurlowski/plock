@@ -2,14 +2,8 @@
 
 one:
   title: MyString
-  descirption: MyString
-  user_id: 1
-  good_vote: 1
-  bad_vote: 1
+  description: MyString
 
 two:
   title: MyString
-  descirption: MyString
-  user_id: 1
-  good_vote: 1
-  bad_vote: 1
+  description: MyString
