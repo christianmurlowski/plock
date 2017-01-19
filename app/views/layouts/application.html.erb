@@ -9,6 +9,12 @@
   </head>
 
   <body>
+
+    <% if user_signed_in?  %>
+      current user nil: <%= current_user.nil? %> <%= current_user.email %>
+    <% end %>
     <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   </body>
 </html>
