@@ -10,5 +10,15 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <strong>My Events:</strong>
+
+  <% @events.each do |event| %>
+    <br>
+    Event: <%= event.title %> |
+    Event ID: <%= event.id %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

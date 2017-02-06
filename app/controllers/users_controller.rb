@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @events = @user.events
+
   end
 
   # GET /users/new
