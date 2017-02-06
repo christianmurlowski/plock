@@ -11,14 +11,14 @@ class ParticipationsController < ApplicationController
   def create
     @user = User.find(params[:userid])
     @event = Event.find(params[:eventid])
-    @user.events << @event
 
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to events_path, notice: 'Participation was successfully created.' }
+      if @user.events.exists?(params[:eventid])
+        format.html { redirect_to events_path, alert: "Already entered" }
+        format.json { render json: @user.errors, status: :unprocessable_entity}
       else
-        format.html { redirect_to events_path }
-        format.json { render json: @user.errors, status: :unprocessable_entity, notice: "NOT CREATED" }
+        @user.events << @event
+        format.html { redirect_to events_path, notice: 'You entered the event :)' }
       end
     end
   end
