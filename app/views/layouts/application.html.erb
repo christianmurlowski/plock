@@ -9,10 +9,9 @@
   </head>
 
   <body>
-
-    <% if user_signed_in?  %>
-      current user nil: <%= current_user.nil? %> <%= current_user.email %>
-    <% end %>
+    <%= link_to 'My Profile', current_user %>
+    <%= link_to 'Event List', events_path %>
+    <%= link_to 'User List', users_path %>
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
