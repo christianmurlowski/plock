@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :participations
   has_many :events, through: :participations
+
+  has_many :owned_events, -> { where participations: { owned: true } }, through: :participations, source: :event
 end

@@ -18,6 +18,7 @@ class ParticipationsController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity}
       else
         @user.events << @event
+
         format.html { redirect_to events_path, notice: 'You entered the event :)' }
       end
     end

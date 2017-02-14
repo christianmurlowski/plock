@@ -26,14 +26,33 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    if @event.save
+        create_participation(current_user.id, Event.last.id)
+    end
+    # respond_to do |format|
+    #   if @event.save
+    #     # redirect_to participations_path(userid: current_user.id, eventid: Event.last.id)
+    #     # format.html { redirect_to participations_path(userid: current_user.id, eventid: Event.last.id), notice: 'Event was successfully created.' }
+    #     # format.json { render :show, status: :created, location: @event }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @event.errors, status: :unprocessable_entity }
+    #   end
+    # end
+  end
+
+  def create_participation(userid, eventid)
+    @user = User.find(userid)
+    @event = Event.find(eventid)
 
     respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
+      if @user.events.exists?(eventid)
+        format.html { redirect_to events_path, alert: "Already entered" }
+        format.json { render json: @user.errors, status: :unprocessable_entity}
       else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+        @user.events << @event
+
+        format.html { redirect_to events_path, notice: 'You entered the event :)' }
       end
     end
   end
@@ -72,4 +91,5 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:title, :description)
     end
+
 end
