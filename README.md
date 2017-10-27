@@ -1,24 +1,27 @@
-# README
+# PLOCK - The planner in your pocket
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requiremenets
+1. Ruby installed
+3. Rbenv or rvm installed
+2. SQLite installed
 
-Things you may want to cover:
+## Setup for development
 
-* Ruby version
+### Step 1 - Set ruby version
+`rbenv install 2.4.0`
 
-* System dependencies
+### Step 2 - Install bundler
+`gem install bundler`
 
-* Configuration
+### Step 3 - Bundle dependencies
+`bundle install`
 
-* Database creation
+### Step 4 - Setup the database
+`bundle exec rails db:setup`
 
-* Database initialization
+### Step 5 - Start the server
+`bundle exec rails s`
 
-* How to run the test suite
+Your application will run under http://localhost:3000/
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## <TODO>  Add heroku setup
