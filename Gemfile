@@ -32,15 +32,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 
 group :development, :test do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
 
-group :production do
-  gem 'pg', '0.18.4'
-end
+gem "pg"
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
