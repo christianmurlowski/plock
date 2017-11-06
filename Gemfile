@@ -33,6 +33,8 @@ gem 'devise'
 gem 'grape'
 gem 'rack-cors'
 gem 'grape-active_model_serializers'
+gem 'grape-swagger'
+gem 'grape-swagger-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
