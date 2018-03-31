@@ -26,19 +26,19 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-    if @event.save
-        create_participation(current_user.id, Event.last.id)
+    @event.created_by = current_user.id
+    
+    respond_to do |format|
+      if @event.save
+        # redirect_to participations_path(userid: current_user.id, eventid: Event.last.id)
+        format.html { create_participation(current_user.id, Event.last.id) }
+        # format.html { render participations_path(userid: current_user.id, eventid: Event.last.id), notice: 'Event was successfully created.' }
+        format.json { render :show, status: :created, location: @event }
+      else
+        format.html { render :new }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
     end
-    # respond_to do |format|
-    #   if @event.save
-    #     # redirect_to participations_path(userid: current_user.id, eventid: Event.last.id)
-    #     # format.html { redirect_to participations_path(userid: current_user.id, eventid: Event.last.id), notice: 'Event was successfully created.' }
-    #     # format.json { render :show, status: :created, location: @event }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @event.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   def create_participation(userid, eventid)
