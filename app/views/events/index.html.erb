@@ -16,9 +16,9 @@
         <td><%= event.description %></td>
         <td><%= link_to 'Show', event %></td>
         <% if current_user %>
-          <td><%= link_to 'Edit', edit_event_path(event) %></td>
-          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
+          <td><%= link_to 'Edit', edit_event_path(event) if (current_user.id == event.created_by) %></td>
+          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } if (current_user.id == event.created_by) %></td>
+        <% end %>
         <td>
           <%= link_to 'Participate', participations_path(userid: current_user.id, eventid: event.id), method: :create %>
         </td>
