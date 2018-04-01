@@ -5,6 +5,11 @@
 3. Rbenv or rvm installed
 2. SQLite installed
 
+## API Doc
+
+### To get the current api calls, visit the following site
+http://localhost:3000/documentation
+
 ## Setup for development
 
 ### Step 1 - Set ruby version
